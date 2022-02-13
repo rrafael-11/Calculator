@@ -2,12 +2,21 @@ var display = document.querySelector('.display')
 var numbers = document.querySelectorAll('.number')
 var operators = document.querySelectorAll('.operator')
 var equals = document.querySelector('.equals')
+var clearButton = document.querySelector('.clear')
 var opInput = ''
 var fullNumber = ''
 var num1 = ''
 var num2 = ''
 
-function resetInput() {
+function clear() {
+    num1 = ''
+    num2 = ''
+    opInput = ''
+    fullNumber = ''
+    updateDisplay()
+}
+
+function restartValues() {
     num2 = ''
     opInput = ''
     fullNumber = ''
@@ -32,7 +41,7 @@ function operate() {
             break;
     }
 
-    resetInput()
+    restartValues()
     updateDisplay()
 
     function add(num1, num2) {
@@ -88,3 +97,5 @@ for (var i = 0; i < operators.length; i++) {
 }
 
 equals.addEventListener('mousedown', () => {operate()})
+
+clearButton.addEventListener('mousedown', () => {clear()})
