@@ -1,31 +1,31 @@
-/* To dos
-
-    1- create logic to make calculator work
-    2- add styles to the calculator
-    6- add keyboard support
-    7- add extra styles (e.g hover)
-
-*/
-
 html {
     height: 100%;
 }
 
 body {
+    background-color: #1a1a1a;
     margin: 0;
     height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 20px;
+}
+
+.title {
+    color: white;
 }
 
 .calculator {
-    background-color: hsl(0, 0%, 30%);
+    margin-bottom: 75px;
+    background-color: #4d4d4d;
     padding: 5px;
     display: flex;
     flex-direction: column;
     height: 400px;
-    width: 350px;
+    width: 300px;
 }
 
 .display-container {
@@ -35,14 +35,15 @@ body {
     background-color: #fff;
     margin-bottom: 5px;
     padding-right: 10px;
-    flex: 1 2 auto;
+    flex: 1 0 30px;
     box-sizing: border-box;
 }
 
 .clear {
+    background-color: red;
+    margin: 0;
     align-self: flex-start;
-    background-color: #fff;
-    color: red;
+    color: white;
 }
 
 .display {
@@ -58,16 +59,40 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    flex: 2 2 auto;
+    flex: 2 2 100px;
 }
 
 .button {
     transition: background-color 0.3s ease-in;
-    margin: 1px;
     cursor: pointer;
     border: none;
     font-size: 15px;
     font-weight: bolder;
+}
+
+.number:focus, .decimal-point:focus {
+    border: 1px solid black;
+    outline: none;
+}
+
+.operator:focus {
+    border: 1px solid blue;
+    outline: none;
+}
+
+.equals:focus {
+    border: 1px solid green;
+    outline: none;
+}
+
+.clear:focus {
+    border: 1px solid red;
+    outline: none;
+}
+
+.buttons-section > button {
+    margin: 1px;
+    box-sizing: border-box;
 }
 
 .number, .decimal-point {
@@ -83,13 +108,25 @@ body {
 }
 
 .number:hover, .decimal-point:hover {
-    background-color: hsl(0, 0%, 70%);
+    background-color: hsl(0, 0%, 55%);
 }
 
 .operator:hover {
-    background-color: hsl(203, 92%, 70%);
+    background-color: hsl(203, 92%, 55%);
 }
 
 .equals:hover {
-    background-color: hsl(120, 73%, 70%);
+    background-color: hsl(120, 73%, 55%);
+}
+
+.number-active, .decimal-point-active {
+    background-color: hsl(0, 0%, 55%);
+}
+
+.operator-active {
+    background-color: hsl(203, 92%, 55%);
+}
+
+.equals-active {
+    background-color: hsl(120, 73%, 55%);
 }
