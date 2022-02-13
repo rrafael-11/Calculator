@@ -28,7 +28,20 @@ function operate() {
             fullNumber = multiply(num1, num2);
             break;
         case '/':
-            fullNumber = divide(num1, num2);
+            if (num2 == '0') {
+                alert(`You can't divide by zero!`)
+                num2 = ''
+            } else {
+                fullNumber = divide(num1, num2);
+            }
+            break;
+        case '÷':
+            if (num2 == '0') {
+                alert(`You can't divide by zero!`)
+                num2 = ''
+            } else {
+                fullNumber = divide(num1, num2);
+            }
             break;
     }
 
@@ -54,7 +67,7 @@ function operate() {
 }
 
 function setOperator(op) {
-    if (num1 == false) {
+    if (num1 == '') {
         return null
     } else if (opInput) {
         operate()
@@ -79,6 +92,22 @@ function setDecimalPoint() {
     else {
         opInput ? num2 = fullNumber += '.' : num1 = fullNumber += '.'
     }
+    updateDisplay()
+}
+
+function backspace() {
+    if (opInput && num2) {
+        fullNumber = fullNumber.toString().slice(0, fullNumber.toString().length - 1)
+        num2 = fullNumber
+    }
+    else if (opInput && num2 == false) {
+        opInput = ''
+    }
+    else {
+        fullNumber = fullNumber.toString().slice(0, fullNumber.toString().length - 1)
+        num1 = fullNumber
+    }
+
     updateDisplay()
 }
 
@@ -108,3 +137,62 @@ equals.addEventListener('mousedown', () => { operate() })
 clearButton.addEventListener('mousedown', () => { clear() })
 
 decimalPoint.addEventListener('mousedown', () => { setDecimalPoint() })
+
+document.addEventListener('keydown', (e) => {
+    switch (e.key) {
+        case '1':
+            setNumber('1')
+            break;
+        case '2':
+            setNumber('2')
+            break;
+        case '3':
+            setNumber('3')
+            break;
+        case '4':
+            setNumber('4')
+            break;
+        case '5':
+            setNumber('5')
+            break;
+        case '6':
+            setNumber('6')
+            break;
+        case '7':
+            setNumber('7')
+            break;
+        case '8':
+            setNumber('8')
+            break;
+        case '9':
+            setNumber('9')
+            break;
+        case '0':
+            setNumber('0')
+            break;
+        case '+':
+            setOperator('+')
+            break;
+        case '-':
+            setOperator('-')
+            break;
+        case '*':
+            setOperator('*')
+            break;
+        case '/':
+            setOperator('/')
+            break;
+        case 'Backspace':
+            backspace()
+            break;
+        case '.':
+            setDecimalPoint()
+            break;
+        case '=':
+            operate()
+            break;
+        case 'Enter':
+            operate()
+            break;
+    }
+})
