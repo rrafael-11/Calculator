@@ -14,6 +14,9 @@ function resetInput() {
 }
 
 function operate() {
+    if (num2 == false) {
+        return null
+    } 
     switch (opInput) {
         case '+':
             num1 = add(num1, num2);
@@ -55,6 +58,7 @@ function setOperator(op) {
     } else if (opInput) {
         operate()
         opInput = op
+        updateDisplay()
     } else {
         fullNumber = ''
         opInput = op
