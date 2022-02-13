@@ -1,0 +1,95 @@
+/* To dos
+
+    1- create logic to make calculator work
+    2- add styles to the calculator
+    6- add keyboard support
+    7- add extra styles (e.g hover)
+
+*/
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    background-color: hsl(0, 0%, 30%);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 350px;
+}
+
+.display-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #fff;
+    margin-bottom: 5px;
+    padding-right: 10px;
+    flex: 1 2 auto;
+    box-sizing: border-box;
+}
+
+.clear {
+    align-self: flex-start;
+    background-color: #fff;
+    color: red;
+}
+
+.display {
+    position: relative;
+    bottom: 30px;
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    flex: 2 2 auto;
+}
+
+.button {
+    transition: background-color 0.3s ease-in;
+    margin: 1px;
+    cursor: pointer;
+    border: none;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.number, .decimal-point {
+    background-color: hsl(0, 0%, 80%);
+}
+
+.operator {
+    background-color: hsl(203, 92%, 80%);
+}
+
+.equals {
+    background-color: hsl(120, 73%, 80%);
+}
+
+.number:hover, .decimal-point:hover {
+    background-color: hsl(0, 0%, 70%);
+}
+
+.operator:hover {
+    background-color: hsl(203, 92%, 70%);
+}
+
+.equals:hover {
+    background-color: hsl(120, 73%, 70%);
+}
