@@ -1,14 +1,39 @@
 var display = document.querySelector('.display')
 var numbers = document.querySelectorAll('.number')
 var operators = document.querySelectorAll('.operator')
+var equals = document.querySelector('.equals')
 var opInput = ''
 var fullNumber = ''
 var num1 = ''
 var num2 = ''
 
-function operate(op, num1, num2) {
+function resetInput() {
+    num2 = ''
+    opInput = ''
+    fullNumber = ''
+}
+
+function operate() {
+    switch (opInput) {
+        case '+':
+            num1 = add(num1, num2);
+            break;
+        case '-':
+            num1 = subtract(num1, num2);
+            break;
+        case '*':
+            num1 = multiply(num1, num2);
+            break;
+        case '/':
+            num1 = divide(num1, num2);
+            break;
+    }
+
+    resetInput()
+    updateDisplay()
+
     function add(num1, num2) {
-        return num1 + num2
+        return parseInt(num1) + parseInt(num2)
     }
 
     function subtract(num1, num2) {
@@ -27,6 +52,9 @@ function operate(op, num1, num2) {
 function setOperator(op) {
     if (num1 == false) {
         return null
+    } else if (opInput) {
+        operate()
+        opInput = op
     } else {
         fullNumber = ''
         opInput = op
@@ -54,3 +82,5 @@ for (var i = 0; i < numbers.length; i++) {
 for (var i = 0; i < operators.length; i++) {
     operators[i].addEventListener('mousedown', (e) => setOperator(e.target.textContent))
 }
+
+equals.addEventListener('mousedown', () => {operate()})
